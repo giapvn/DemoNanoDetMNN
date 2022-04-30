@@ -62,3 +62,11 @@ make -j4
 ./nanodet-mnn "1" "path_to_images"
 ```
 - After that we can receive some results as below:</br>
+<img src="./results/out1.jpg" width="256"/>
+<img src="./results/out3.jpg" width="512"/>
+Q&A</br>
+1. How to assign multi-classes to a bounding box?</br>
+- Step 1: We change datatype of instances label and score of `struct BoxInfo` into `vector` type.</br>
+- Step 2: In `decode_infer` function, instead of getting only one label at most having the score greater than threshold, we can get all lables that possess `score` property is greater than `score_threshold` and then push them into vectors.</br>
+2. How can I modify the above C++ source code that supports different iou_threshold and confidence score?</br>
+- In order to support different iou_threshold and confidence score, we can adjust valuable of `score_threshold` for confident score and `nms_threshold` for iou_threshold.</br>
